@@ -1,14 +1,41 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+     iWeather
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+ 
+  <ion-grid *ngIf="WeatherData">
+    <ion-row>
+      <ion-col width-50 offset-25>
+         <h1 class="description">{{City}} Weather Details</h1>
+         <img src="http://openweathermap.org/img/w/{{icon}}" class="Icon"> 
+         <h1 class="description">{{WeatherData.weather[0].description}}</h1>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+              <h1>Temperature: {{WeatherData.main.temp}}&deg;</h1>
+            </ion-item> <ion-item>
+                <h1>Humidity: {{WeatherData.main.humidity}}</h1>
+              </ion-item> <ion-item>
+                  <h1>Pressure: {{WeatherData.main.pressure}}</h1>
+                </ion-item> <ion-item>
+                    <h1>Max Temperature: {{WeatherData.main.temp_max}}</h1>
+                  </ion-item> <ion-item>
+                      <h1>Min Temperature: {{WeatherData.main.temp_min}}</h1>
+                    </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+ <button ion-button (click)="PopThisPage()" class="Button">Enter City Name</button>
+ 
+
 </ion-content>
